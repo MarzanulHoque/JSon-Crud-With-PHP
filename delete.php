@@ -5,7 +5,7 @@ if (file_exists('books.json')) {
     $books = json_decode($json, true);
     foreach ($books as $key => $value) {
         if ($value['id'] == $_GET['id']) {
-            array_splice($books, 1, 1);
+            unset($books[$key]);
             $flag = true;
             $books = json_encode($books);
             file_put_contents('books.json', $books);
